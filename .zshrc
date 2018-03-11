@@ -1,6 +1,8 @@
 # Emacs Tramp bailout
 [[ $TERM == "dumb" ]] && unsetopt zle && PS1='$ ' && return
 
+local ZSH_DIR="${$(realpath ~/.zshrc):h}"
+
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
 
@@ -40,7 +42,7 @@ ZSH_TMUX_ITERM2=true
 
 autoload zmv
 
-source ${HOME}/.zgen/zgen.zsh
+source ${ZSH_DIR}/zgen/zgen.zsh
 
 if ! zgen saved; then
 
@@ -141,7 +143,7 @@ EOBUNDLE
 		zgen oh-my-zsh plugins/debian
 	fi
 
-	for bundle in $ZSH_DIR/plugins/*(D); do
+	for bundle in ${ZSH_DIR}/plugins/*(D); do
 		zgen load $bundle
 	done
 
