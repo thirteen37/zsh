@@ -1,8 +1,6 @@
 # Emacs Tramp bailout
 [[ $TERM == "dumb" ]] && unsetopt zle && PS1='$ ' && return
 
-local ZSH_DIR="${0:A:h}"
-
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
 
@@ -42,7 +40,7 @@ ZSH_TMUX_ITERM2=true
 
 autoload zmv
 
-source ${HOME}/zgen/zgen.zsh
+source ${HOME}/.zgen/zgen.zsh
 
 if ! zgen saved; then
 
@@ -167,11 +165,11 @@ fi
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # iTerm2 shell integration
-test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+[ -f "~/.iterm2_shell_integration.zsh" ] && source "~/.iterm2_shell_integration.zsh"
 
 # "zsh history substring search" additional bindings
 bindkey -M emacs '^P' history-substring-search-up
 bindkey -M emacs '^N' history-substring-search-down
 
-which hub > /dev/null && alias git=hub
-which direnv > /dev/null && eval "$(direnv hook zsh)"
+[ $commands[hub] ] && alias git=hub
+[ $commands[direnv] ] && eval "$(direnv hook zsh)"
