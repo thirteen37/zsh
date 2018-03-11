@@ -73,8 +73,11 @@ EOBUNDLE
 	zgen oh-my-zsh plugins/git-extras
 	#zgen oh-my-zsh plugins/git-prompt
 	zgen oh-my-zsh plugins/git-flow
-	zgen oh-my-zsh plugins/github
 	zgen load unixorn/git-extra-commands
+    if [ -z "$SSH_CLIENT" ] && [ -z "$SSH_TTY" ]; then
+	    zgen oh-my-zsh plugins/github
+        zgen oh-my-zsh plugins/tig
+    fi
 
 	# ruby
 	zgen oh-my-zsh plugins/ruby
@@ -119,6 +122,7 @@ EOBUNDLE
 	# devops
 	zgen oh-my-zsh plugins/docker
 	zgen oh-my-zsh plugins/aws
+    zgen oh-my-zsh plugins/terraform
     if [ -z "$SSH_CLIENT" ] && [ -z "$SSH_TTY" ]; then
 	    zgen oh-my-zsh plugins/vagrant
 	    zgen oh-my-zsh plugins/heroku
@@ -136,12 +140,15 @@ EOBUNDLE
 
 	if command -v pacman &> /dev/null ; then
 		zgen oh-my-zsh plugins/archlinux
-		zgen oh-my-zsh plugins/systemd
 	fi
 
 	if command -v apt-get &> /dev/null ; then
-		zgen oh-my-zsh plugins/debian
+		zgen oh-my-zsh plugins/ubuntu
 	fi
+
+    if command -v systemctl &> /dev/null ; then
+        zgen oh-my-zsh plugins/systemd
+    fi
 
 	for bundle in ${ZSH_DIR}/plugins/*(D); do
 		zgen load $bundle
