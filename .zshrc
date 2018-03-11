@@ -164,14 +164,9 @@ if [[ "$TERMINFO" =~ ".*emacs.*" ]]; then
 	export TERM=xterm-256color
 fi
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
 # iTerm2 shell integration
 [ -f "~/.iterm2_shell_integration.zsh" ] && source "~/.iterm2_shell_integration.zsh"
 
 # "zsh history substring search" additional bindings
 bindkey -M emacs '^P' history-substring-search-up
 bindkey -M emacs '^N' history-substring-search-down
-
-[ $commands[hub] ] && alias git=hub
-[ $commands[direnv] ] && eval "$(direnv hook zsh)"
