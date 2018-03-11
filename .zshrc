@@ -37,6 +37,9 @@ COMPLETION_WAITING_DOTS="true"
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
 
+#ZSH_TMUX_AUTOSTART=true
+ZSH_TMUX_ITERM2=true
+
 autoload zmv
 
 source ${HOME}/zgen/zgen.zsh
@@ -56,7 +59,6 @@ EOBUNDLE
 	zgen oh-my-zsh plugins/safe-paste
 	zgen oh-my-zsh plugins/catimg
 	zgen oh-my-zsh plugins/common-aliases
-	zgen oh-my-zsh plugins/thefuck
 	zgen oh-my-zsh plugins/colorize
 	zgen oh-my-zsh plugins/fasd
 	zgen load supercrabtree/k
@@ -76,27 +78,33 @@ EOBUNDLE
 
 	# ruby
 	zgen oh-my-zsh plugins/ruby
-	#zgen oh-my-zsh plugins/rails
-	zgen oh-my-zsh plugins/rbenv
-	zgen oh-my-zsh plugins/bundler
-	zgen oh-my-zsh plugins/gem
-	zgen oh-my-zsh plugins/zeus
+    if [ -z "$SSH_CLIENT" ] && [ -z "$SSH_TTY" ]; then
+	    #zgen oh-my-zsh plugins/rails
+	    zgen oh-my-zsh plugins/rbenv
+	    zgen oh-my-zsh plugins/bundler
+	    zgen oh-my-zsh plugins/gem
+	    zgen oh-my-zsh plugins/zeus
+    fi
 
 	# python
 	zgen oh-my-zsh plugins/python
 	zgen oh-my-zsh plugins/pip
-	zgen oh-my-zsh plugins/pep8
-	zgen oh-my-zsh plugins/pylint
-	#zgen oh-my-zsh plugins/virtualenv
-	#zgen oh-my-zsh plugins/virtualenvwrapper
+    if [ -z "$SSH_CLIENT" ] && [ -z "$SSH_TTY" ]; then
+	    zgen oh-my-zsh plugins/pep8
+	    zgen oh-my-zsh plugins/pylint
+	    #zgen oh-my-zsh plugins/virtualenv
+	    #zgen oh-my-zsh plugins/virtualenvwrapper
+    fi
 
 	# javascript
 	zgen oh-my-zsh plugins/node
 	zgen oh-my-zsh plugins/npm
-	zgen oh-my-zsh plugins/nvm
-	zgen oh-my-zsh plugins/coffee
-	zgen oh-my-zsh plugins/cake
-	zgen oh-my-zsh plugins/bower
+    if [ -z "$SSH_CLIENT" ] && [ -z "$SSH_TTY" ]; then
+	    zgen oh-my-zsh plugins/nvm
+	    zgen oh-my-zsh plugins/coffee
+	    zgen oh-my-zsh plugins/cake
+	    zgen oh-my-zsh plugins/bower
+    fi
 
 	# clojure
 	zgen oh-my-zsh plugins/lein
@@ -109,11 +117,13 @@ EOBUNDLE
 	zgen oh-my-zsh plugins/postgres
 
 	# devops
-	zgen oh-my-zsh plugins/knife
 	zgen oh-my-zsh plugins/docker
-	zgen oh-my-zsh plugins/heroku
-	zgen oh-my-zsh plugins/vagrant
 	zgen oh-my-zsh plugins/aws
+    if [ -z "$SSH_CLIENT" ] && [ -z "$SSH_TTY" ]; then
+	    zgen oh-my-zsh plugins/vagrant
+	    zgen oh-my-zsh plugins/heroku
+	    zgen oh-my-zsh plugins/knife
+    fi
 
 	# editors
 	zgen oh-my-zsh plugins/emacs
