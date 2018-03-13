@@ -1,7 +1,16 @@
 # Emacs Tramp bailout
 [[ $TERM == "dumb" ]] && unsetopt zle && PS1='$ ' && return
 
-local ZSH_DIR="${$(realpath ~/.zshrc):h}"
+local SCRIPT_PATH
+command -v realpath &> /dev/null
+
+if [ $? -eq 0 ]; then
+    SCRIPT_PATH=$(realpath ~/.zshrc)
+else
+    SCRIPT_PATH=$(readlink -f ~/.zshrc)
+fi
+
+local ZSH_DIR="${SCRIPT_PATH:h}"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
