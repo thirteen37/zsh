@@ -71,6 +71,8 @@ EOBUNDLE
 	zgen oh-my-zsh plugins/colorize
 	zgen oh-my-zsh plugins/fasd
 	zgen load supercrabtree/k
+    zgen load MichaelAquilina/zsh-you-should-use
+    zgen load zdharma/fast-syntax-highlighting
 
 	# terminal
 	zgen oh-my-zsh plugins/tmux
@@ -145,6 +147,7 @@ EOBUNDLE
 		zgen oh-my-zsh plugins/osx
 		zgen oh-my-zsh plugins/brew
 		zgen oh-my-zsh plugins/xcode
+        zgen load iam4x/zsh-iterm-touchbar
 	fi
 
 	if command -v pacman &> /dev/null ; then
