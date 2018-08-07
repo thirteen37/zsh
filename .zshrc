@@ -189,3 +189,11 @@ fi
 # "zsh history substring search" additional bindings
 bindkey -M emacs '^P' history-substring-search-up
 bindkey -M emacs '^N' history-substring-search-down
+
+# less
+function viless () {
+    VIMRUNTIME=$(ls -d /usr/share/vim/vim*/)
+    "$VIMRUNTIME/macros/less.sh" $*
+}
+
+export LESS='--quit-if-one-screen --ignore-case --status-column --LONG-PROMPT --RAW-CONTROL-CHARS --HILITE-UNREAD --tabs=4 --no-init --window=-4'
