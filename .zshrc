@@ -190,6 +190,8 @@ fi
 bindkey -M emacs '^P' history-substring-search-up
 bindkey -M emacs '^N' history-substring-search-down
 
+alias T="todo.sh"
+
 # less
 function viless () {
     VIMRUNTIME=$(ls -d /usr/share/vim/vim*/)
